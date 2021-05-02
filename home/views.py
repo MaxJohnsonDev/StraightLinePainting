@@ -1,8 +1,23 @@
 from django.shortcuts import render, redirect
-from .forms import ContactForm
+from .forms import ContactForm, CommentForm
 from django.core.mail import send_email, BadHeaderError
 from django.http import HttpResponse
 
+
+def post_review(request, id):
+    if request.method == 'POST':
+        cf = CommentForm(request.POST or None)
+        if cf.is_valid():
+            content = request.POST.get('content')
+            comment = Comment.objects.create(post = post, user = request.user, content = content)
+            comment.save()
+        else:
+            cf = CommentForm()
+
+        context = {
+        'comment_form':cf,
+        }
+        return render(request, 'home:reviews', context  )
 
 def contact(request):
     if request.method == 'POST':
