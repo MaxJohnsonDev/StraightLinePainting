@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import ContactForm, CommentForm
-from django.core.mail import send_email, BadHeaderError
+from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 
+
+def homepage(request):
+    return render(request, 'home/home.html')
 
 def post_review(request, id):
     if request.method == 'POST':
@@ -19,7 +22,7 @@ def post_review(request, id):
         }
         return render(request, 'home:reviews', context  )
 
-def contact(request):
+def contactForm(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -39,6 +42,6 @@ def contact(request):
                 return HttpResponse('Invalid header found')
             return redirect ("home:contactForm")
     form = ContactForm()
-    return render(request, "home/contact.html", {'for,':forms})
+    return render(request, "home/contact.html", {'form,':forms})
 
 # Create your views here.
