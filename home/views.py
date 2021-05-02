@@ -4,8 +4,9 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 
 
-def homepage(request):
-    return render(request, 'home/home.html')
+def index(request):
+    print('*** index ***'* 20)
+    return render(request, 'home/home.html', context = context)
 
 def post_review(request, id):
     if request.method == 'POST':
