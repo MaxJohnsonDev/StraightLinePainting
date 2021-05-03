@@ -1,9 +1,9 @@
-from django.conf.urls import url
+from django.urls import path
 from home.views import index, contactForm
 
 app_name = 'home'
 
 urlpatterns = [
-    url(r'^index/', 'home.views.homepage'),
-    url(r'^contactForm/', 'home.views.contactForm')
+    path('', index.as_view(), name='index'),
+    path(r'^contactForm/', 'home.views.contactForm')
 ]
