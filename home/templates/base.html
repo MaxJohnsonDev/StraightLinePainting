@@ -12,16 +12,15 @@
     </div>
     <div class="navMenu">
       <ul>
-        <li><a href="{% url 'home' %}" title="Home" >Home</a></li>
-        <li><a href="contact.html" title="Contact" >Contact</a></li>
-        <li><a href="comments.html" title="Comments" >Comments</a></li>
+        <li><a href="{% url 'home:home' %}" title="Home" >Home</a></li>
+        <li><a href="#" title="Contact" >Contact</a></li>
+        <li><a href="#" title="Comments" >Comments</a></li>
       </ul>
     </div>
     <div>
       {% block content %}
 
       {% endblock %}
-    </div>
-
+    </div>!
   </body>
 </html>
