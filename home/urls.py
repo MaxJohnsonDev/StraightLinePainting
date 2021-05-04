@@ -5,5 +5,6 @@ app_name = 'home'
 
 urlpatterns = [
     path('', views.home_view, name='home'),
-    path('contactForm/', views.contactForm, name='contactform')
+    path('contactForm/', views.contactForm, name='contactform'),
+    path('reviews/', views.displayReviews, name='reviews'),
 ]

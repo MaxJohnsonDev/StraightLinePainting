@@ -43,8 +43,11 @@ def contactForm(request):
                 return HttpResponse('Invalid header found')
             return redirect ("home:contactForm")
     form = ContactForm()
-    return render(request, "home/contact.html", {'form,':forms})
+    return render(request, 'home:contactForm', {'form,':forms})
 
+
+def displayReviews(request):
+    print('*** displayReviews ***' * 10)
 # Create your views here.
 
 def contactFormSubmission(request):
