@@ -13,3 +13,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    name = models.CharField(max_length=200)
+    comment = models.TextField()
+    image = models.FileField(upload_to='documents/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)

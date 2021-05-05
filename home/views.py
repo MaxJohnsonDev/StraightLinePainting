@@ -3,10 +3,10 @@ from .forms import ContactForm, CommentForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 
-
 def home_view(request):
     print('*** index ***'* 20)
     return render(request, 'home/home.html')
+
 
 def post_review(request, id):
     if request.method == 'POST':

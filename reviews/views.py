@@ -1,4 +1,4 @@
-# from django.shortcuts import render, get_object_or_404
+############################## from django.shortcuts import render, get_object_or_404
 # from .models import Post
 # from .forms import CommentForm
 #
@@ -26,7 +26,17 @@
 
 from django.shortcuts import render
 from .models import Review
-from .utils import average_rating
+#from .utils import average_rating
+
+def submitReview(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('reviews.html')
+    else:
+        form = ReviewForm()
+    return render(request, 'reviews/postReview.html', {'form': form})
 
 def review_list(request):
     reviews = Review.objects.all()
@@ -42,7 +52,7 @@ def review_list(request):
             number_of_reviews = 0
         review_list.append({'review': review,\
                             'job_rating': job_rating,\
-                            'number_of_reviews',: number_of_reviews})
+                            'number_of_reviews': number_of_reviews})
     context = {
             'review_list': review_list
     }

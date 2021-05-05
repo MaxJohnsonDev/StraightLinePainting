@@ -59,7 +59,7 @@ ROOT_URLCONF = 'StraightLinePainting.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'StraightLinePainting', 'home/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'StraightLinePainting', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -138,3 +139,7 @@ EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Media upload settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
