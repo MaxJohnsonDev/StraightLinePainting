@@ -24,8 +24,9 @@
 #                                             'comment_form': comment_form})
 
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Review
+from .forms import ReviewForm
 #from .utils import average_rating
 
 def submitReview(request):
@@ -33,7 +34,7 @@ def submitReview(request):
         form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('reviews.html')
+            return redirect(review_list)
     else:
         form = ReviewForm()
     return render(request, 'reviews/postReview.html', {'form': form})
