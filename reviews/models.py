@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Post(models.Model):
@@ -16,7 +17,17 @@ class Post(models.Model):
 
 
 class Review(models.Model):
+    STATUS_CHOICES = (
+            ('draft', 'Draft'),
+            ('published', 'Published')
+        )
     name = models.CharField(max_length=200)
     comment = models.TextField()
     image = models.FileField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='published')
+
+    class Meta:
+        ordering = ('-publish',)
+    def __str__(self):
+        return self.name

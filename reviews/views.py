@@ -7,13 +7,13 @@ def submitReview(request):
         form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect(reviews:success)
+            return redirect('reviews:success')
     else:
         form = ReviewForm()
     return render(request, 'reviews/postReview.html', {'form': form})
 
 def review_list(request):
-    reviews = Review.objects.all()
+    review = Review.objects.all()
     review_list = []
     for review in reviews:
         reviews = review.review_set.all()
@@ -33,4 +33,4 @@ def review_list(request):
     return render(request, 'reviews/review_list.html', context)
 
 def success(request):
-    return render(request, 'reviews:success')
+    return render(request, 'reviews/success.html')

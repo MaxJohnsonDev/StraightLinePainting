@@ -25,7 +25,7 @@
 }
 
 .navMenu ul li:first-child a {
-  -moz-border-radius-topleft: 12px'
+  -moz-border-radius-topleft: 12px;
   -webkit-border-radius-topleft: 12px;
 }
 
