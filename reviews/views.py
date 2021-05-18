@@ -34,3 +34,9 @@ def review_list(request):
 
 def success(request):
     return render(request, 'reviews/success.html')
+
+
+def post_list(request):
+    posts = Review.publised.all()
+    return render(request, 'reviews/reviews.html', {'posts': posts})
+
