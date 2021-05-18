@@ -15,7 +15,7 @@ from django.utils import timezone
 #     def __str__(self):
 #         return self.name
 
-class PublishedManager(model.Manager):
+class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset()\
                                             .filter(status='published')
@@ -34,6 +34,6 @@ class Review(models.Model):
     published = PublishedManager()
 
     class Meta:
-        ordering = ('-publish',)
+        ordering = ('-uploaded_at',)
     def __str__(self):
         return self.name
